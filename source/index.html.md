@@ -51,7 +51,7 @@ You must replace <code>subaccountid</code> with the subaccountid that you want t
 
 # Send SMS
 
-## Send single SMS requests
+## Send single SMS requests (POST)
 
 ```ruby
 RUBY CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
@@ -84,21 +84,44 @@ JS CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
 ```
 
 This endpoint is used to send SMS individually (1 request per SMS).
+It is ideal to send single personalized messages for use-cases like notifications or alerting for example.
 
-### HTTP Request
+### URL
 
-`POST https://api.wavecell.io/sms/v1/{subAccountId}`
+The Wavecell subaccountid to use is defined in the URL where you send your POST request as shown below:
 
-### Query Parameters
+`https://api.wavecell.io/sms/v1/{subAccountId}`
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+*NB: you need to replace {subAccountId} by the subAccountId that you intend to use*
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+### Request structure
+
+To send a single SMS using the Wavecell SMS API you need to submit JSON object to the url defined above.
+The JSON object takes the following properties:
+
+| Name            | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Required | Example                    |
+|-----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------------------------|
+| source          | string | This is the sender Id the message will appear from (ie: TPOA).  The source can be an alphanumeric string that can contain both upper- and lower-case ASCII letters,  digits from 0 to 9 and the space character. The maximum length for alphanumeric sources is 11 characters. Alphanumeric sources are mainly used for sending branded SMS.    According to the country where you send your SMS, this value might be overwritten by a value forced by the mobile network to ensure delivery. | Optional | DarkVador                  |
+| destination     | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Required | +6512345678                |
+| clientMessageId | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Optional | DkVd0001                   |
+| text            | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Required | I am your father           |
+| encoding        | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Optional | AUTO                       |
+| scheduled       | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Optional | "2016-11-03T08:24:20.362Z" |
+| expiry          | string |  
+
+> The single SMS request expect to receive a JSON with the following structure of names/values
+
+```json
+{
+  "source": "string",
+  "destination": "string",
+  "clientMessageId": "string",
+  "text": "string",
+  "encoding": "AUTO",
+  "scheduled": "2016-11-03T08:24:20.332Z",
+  "expiry": "2016-11-03T08:24:20.332Z"
+}
+```
 
 ## Get a Specific Kitten
 
