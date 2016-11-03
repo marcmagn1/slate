@@ -257,21 +257,39 @@ The JSON object takes the following properties:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="about-the-smsrequest-object">About the SmsRequest Object</h2>
+<h1 id="smsrequest-object-values">SmsRequest Object values</h1>
 
-<h3 id="source">source</h3>
+<p>Here below is a more detailed information about the different values that you can assign when submitting SMS using Wavcell API.</p>
 
-<h3 id="destination">destination</h3>
+<h2 id="source">source</h2>
 
-<h3 id="clientmessageid">clientMessageId</h3>
+<p>The source value can also be called senderID or TPOA. It is the from address that will be used when delivering the SMS to the handset.
+It can take different formats:
+- <strong>Alphanumeric</strong> <em>(example: MyBrand):</em> this is the case when a source is composed of an alphanumeric string (max 11 characters: letters from the ASCII character set, digits and the space character). Alphanumeric sources are generally used for branded SMS to help the SMS receiver to identify the brand or services which originated the SMS.
+- <strong>Numeric</strong> *(example: +6512345678):*this the case when a source is composed of a string made purely of digits (max 17 chars). It can also start with the + sign. Numeric sources ar generally used when the originator intends to receive an answer to the SMS as it is interpereted as regular phone number by the destination handset.</p>
 
-<h3 id="text">text</h3>
+<p><strong>NB - Limitations:</strong> According to the country where the SMS is sent to, sources can be overwritten in order to ensure a better delivery. If you have some specific enquiries related to the type of source available for your account towards a specific destination, please <a href='mailto:sales@wavecell.com'>contact your account manager</a>.</p>
 
-<h3 id="encoding">encoding</h3>
+<h2 id="destination">destination</h2>
 
-<h3 id="scheduled">scheduled</h3>
+<p>This value is the destination phone number for the SMS.
+The destination should be submitted following the international format: it should include the country code (the leading + sign can be omitted but this is not an obligation) and the leading 0 of the local format has to be removed.
+<em>(Valid examples include: +6512345678, 6512345678)</em></p>
 
-<h3 id="expiry">expiry</h3>
+<h2 id="clientmessageid">clientMessageId</h2>
+
+<p>This value is not mandatory. If used, the clientMessageId allows you to submit SMS associated to your custom message ID. That way, you are able to match the information contained in the API response  with the ID from your own business logic.</p>
+
+<h2 id="text">text</h2>
+
+<p>The text or the message (or SMS body) is the main part of your SMS: it is what is going to be displayed on the destination handset.
+It can contain characters from the ASCII character or from the UNICODE character set (see next section for more information)</p>
+
+<h2 id="encoding">encoding</h2>
+
+<h2 id="scheduled">scheduled</h2>
+
+<h2 id="expiry">expiry</h2>
 
           <h1 id="errors">Errors</h1>
 
