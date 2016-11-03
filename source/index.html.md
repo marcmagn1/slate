@@ -26,97 +26,68 @@ Welcome to the Wavecell SMS API! You can use our API to send single or bulk SMS 
 > To authorize, use this code:
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+RUBY CODE FOR AUTHENTICATION GOES HERE
 ```
 
 ```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+PYTHON CODE FOR AUTHENTICATION GOES HERE
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+SHELL CODE FOR AUTHENTICATION GOES HERE
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+JS CODE FOR AUTHENTICATION GOES HERE
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `Accountid`, `Password` and `{subaccountid}` with your API credentials.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+Wavecell SMS API uses **HTTP/HTTPS basic Authentication**. The authentication uses the Wavecell AccountId as username and unless you modified it, the password to allow access to the API is your Wavecell password. You can register a new Wavecell account from Wavecell [website](http://www.wavecell.com/customer/Account/Register).
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>subaccountid</code> with the subaccountid that you want to use. Accountid and password should also be replaced by your own credentials.
 </aside>
 
-# Kittens
+# Send SMS
 
-## Get All Kittens
+## Send single SMS requests
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+RUBY CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
 ```
 
 ```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+PYTHON  CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+SHELL CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+JS CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns a JSON object structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+{
+  "umid": "string",
+  "clientMessageId": "string",
+  "destination": "string",
+  "status": {
+    "code": "string",
+    "description": "string"
   }
-]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint is used to send SMS individually (1 request per SMS).
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://api.wavecell.io/sms/v1/{subAccountId}`
 
 ### Query Parameters
 
