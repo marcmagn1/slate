@@ -203,51 +203,51 @@ The JSON object takes the following properties:</p>
 <tr>
 <td style="text-align: center">source</td>
 <td style="text-align: center">string</td>
-<td>This is the sender Id the message will appear from (ie: TPOA).  The source can be an alphanumeric string that can contain both upper- and lower-case ASCII letters,  digits from 0 to 9 and the space character. The maximum length for alphanumeric sources is 11 characters. Alphanumeric sources are mainly used for sending branded SMS.    According to the country where you send your SMS, this value might be overwritten by a value forced by the mobile network to ensure delivery.</td>
+<td>Alphanumeric or numeric string used as Sender ID for the SMS</td>
 <td style="text-align: center">Optional</td>
-<td style="text-align: center">DarkVador</td>
+<td style="text-align: center">MyBrand</td>
 </tr>
 <tr>
 <td style="text-align: center">destination</td>
 <td style="text-align: center">string</td>
-<td></td>
+<td>Destination phone number</td>
 <td style="text-align: center">Required</td>
 <td style="text-align: center">+6512345678</td>
 </tr>
 <tr>
 <td style="text-align: center">clientMessageId</td>
 <td style="text-align: center">string</td>
-<td></td>
+<td>Unique id that you want to associate with the SMS</td>
 <td style="text-align: center">Optional</td>
-<td style="text-align: center">DkVd0001</td>
+<td style="text-align: center">MyBd0001</td>
 </tr>
 <tr>
 <td style="text-align: center">text</td>
 <td style="text-align: center">string</td>
-<td></td>
+<td>SMS body (ie: text of the message)</td>
 <td style="text-align: center">Required</td>
-<td style="text-align: center">I am your father</td>
+<td style="text-align: center">Welcome among us!</td>
 </tr>
 <tr>
 <td style="text-align: center">encoding</td>
 <td style="text-align: center">string</td>
-<td></td>
+<td>Character set to use for this SMS</td>
 <td style="text-align: center">Optional</td>
 <td style="text-align: center">AUTO</td>
 </tr>
 <tr>
 <td style="text-align: center">scheduled</td>
-<td style="text-align: center">string</td>
-<td></td>
+<td style="text-align: center">timestamp</td>
+<td>Pre-defined date and time for this SMS to be sent in the future</td>
 <td style="text-align: center">Optional</td>
-<td style="text-align: center">&ldquo;2016-11-03T08:24:20.362Z&rdquo;</td>
+<td style="text-align: center">2016-11-03T08:24:20.362Z</td>
 </tr>
 <tr>
 <td style="text-align: center">expiry</td>
 <td style="text-align: center">string</td>
-<td></td>
+<td>Maximum date and time for this SMS to be sent at</td>
 <td style="text-align: center">Optional</td>
-<td style="text-align: center">&ldquo;2016-11-04T08:24:20.362Z&rdquo;</td>
+<td style="text-align: center">2016-11-04T08:24:20.362Z</td>
 </tr>
 </tbody></table>
 
