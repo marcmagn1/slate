@@ -99,81 +99,50 @@ The Wavecell subaccountid to use is defined in the URL where you send your POST 
 To send a single SMS using the Wavecell SMS API you need to submit JSON object to the url defined above.
 The JSON object takes the following properties:
 
-| Name            | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Required | Example                    |
-|-----------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------------------------|
-| source          | string | This is the sender Id the message will appear from (ie: TPOA).  The source can be an alphanumeric string that can contain both upper- and lower-case ASCII letters,  digits from 0 to 9 and the space character. The maximum length for alphanumeric sources is 11 characters. Alphanumeric sources are mainly used for sending branded SMS.    According to the country where you send your SMS, this value might be overwritten by a value forced by the mobile network to ensure delivery. | Optional | DarkVador                  |
-| destination     | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Required | +6512345678                |
-| clientMessageId | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Optional | DkVd0001                   |
-| text            | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Required | I am your father           |
-| encoding        | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Optional | AUTO                       |
-| scheduled       | string |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Optional | "2016-11-03T08:24:20.362Z" |
-| expiry          | string |  
+| Name | Type | Description | Required |
+|:---------------:|:---------:|-----------------------------------------------------------------|:--------:|
+| source | string |  Alphanumeric or numeric string used as Sender ID for the SMS | Optional |
+| destination | string | Destination phone number | Required |
+| clientMessageId | string | Unique id that you want to associate with the SMS | Optional |
+| text | string | SMS body (ie: text of the message) | Required |
+| encoding | string | Character set to use for this SMS | Optional |
+| scheduled | timestamp | Pre-defined date and time for this SMS to be sent in the future | Optional |
+| expiry | timestamp | Maximum date and time for this SMS to be sent at | Optional |
 
 > The single SMS request expect to receive a JSON with the following structure of names/values
 
 ```json
 {
-  "source": "string",
-  "destination": "string",
-  "clientMessageId": "string",
-  "text": "string",
+  "source": "Developer",
+  "destination": "+6512345678",
+  "clientMessageId": "MyBd00001",
+  "text": "Hellow World",
   "encoding": "AUTO",
   "scheduled": "2016-11-03T08:24:20.332Z",
-  "expiry": "2016-11-03T08:24:20.332Z"
+  "expiry": "2016-11-03T18:24:20.332Z"
 }
 ```
 
-## Get a Specific Kitten
+# SmsRequest Object values
 
-```ruby
-require 'kittn'
+Here below is a more detailed information about the different values that you can assign when submitting SMS using Wavcell API.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+##source
+The source value can also be called senderID or TPOA. It is the from address that will be used when delivering the SMS to the handset.
+It can take different formats:
+- **Alphanumeric** *(example: MyBrand):* this is the case when a source is composed of an alphanumeric string (max 11 characters: letters from the ASCII character set, digits and the space character). Alphanumeric sources are generally used for branded SMS to help the SMS receiver to identify the brand or services which originated the SMS.
+- **Numeric** *(example: +6512345678):*this the case when a source is composed of a string made purely of digits (max 17 chars). It can also start with the + sign. Numeric sources ar generally used when the originator intends to receive an answer to the SMS as it is interpereted as regular phone number by the destination handset.
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
+**NB - Limitations:** According to the country where the SMS is sent to, sources can be overwritten in order to ensure a better delivery. If you have some specific enquiries related to the type of source available for your account towards a specific destination, please <a href='mailto:sales@wavecell.com'>contact your account manager</a>.
+##destination
+This value is the destination phone number for the SMS.
+The destination should be submitted following the international format: it should include the country code (the leading + sign can be omitted but this is not an obligation) and the leading 0 of the local format has to be removed.
+*(Valid examples include: +6512345678, 6512345678)*
+##clientMessageId
+This value is not mandatory. If used, the clientMessageId allows you to submit SMS associated to your custom message ID. That way, you are able to match the information contained in the API response  with the ID from your own business logic.
+##text
+The text or the message (or SMS body) is the main part of your SMS: it is what is going to be displayed on the destination handset.
+It can contain characters from the ASCII character or from the UNICODE character set (see next section for more information)
+##encoding
+##scheduled
+##expiry
