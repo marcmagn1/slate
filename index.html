@@ -151,7 +151,7 @@ You must replace <code>subaccountid</code> with the subaccountid that you want t
 
 <h1 id="send-sms">Send SMS</h1>
 
-<h2 id="send-single-sms-requests">Send single SMS requests</h2>
+<h2 id="send-single-sms-requests-post">Send single SMS requests (POST)</h2>
 <pre class="highlight ruby"><code><span class="no">RUBY</span> <span class="no">CODE</span> <span class="no">FOR</span> <span class="no">SENDING</span> <span class="no">SINGLE</span> <span class="no">SMS</span> <span class="no">REQUESTS</span> <span class="no">GOES</span> <span class="no">HERE</span>
 </code></pre>
 <pre class="highlight python"><code><span class="n">PYTHON</span>  <span class="n">CODE</span> <span class="n">FOR</span> <span class="n">SENDING</span> <span class="n">SINGLE</span> <span class="n">SMS</span> <span class="n">REQUESTS</span> <span class="n">GOES</span> <span class="n">HERE</span>
@@ -175,36 +175,95 @@ You must replace <code>subaccountid</code> with the subaccountid that you want t
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to send SMS individually (1 request per SMS).</p>
+<p>This endpoint is used to send SMS individually (1 request per SMS).
+It is ideal to send single personalized messages for use-cases like notifications or alerting for example.</p>
 
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="url">URL</h3>
 
-<p><code class="prettyprint">POST https://api.wavecell.io/sms/v1/{subAccountId}</code></p>
+<p>The Wavecell subaccountid to use is defined in the URL where you send your POST request as shown below:</p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<p><code class="prettyprint">https://api.wavecell.io/sms/v1/{subAccountId}</code></p>
+
+<p><em>NB: you need to replace {subAccountId} by the subAccountId that you intend to use</em></p>
+
+<h3 id="request-structure">Request structure</h3>
+
+<p>To send a single SMS using the Wavecell SMS API you need to submit JSON object to the url defined above.
+The JSON object takes the following properties:</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Name</th>
+<th>Type</th>
 <th>Description</th>
+<th>Required</th>
+<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>source</td>
+<td>string</td>
+<td>This is the sender Id the message will appear from (ie: TPOA).  The source can be an alphanumeric string that can contain both upper- and lower-case ASCII letters,  digits from 0 to 9 and the space character. The maximum length for alphanumeric sources is 11 characters. Alphanumeric sources are mainly used for sending branded SMS.    According to the country where you send your SMS, this value might be overwritten by a value forced by the mobile network to ensure delivery.</td>
+<td>Optional</td>
+<td>DarkVador</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>destination</td>
+<td>string</td>
+<td></td>
+<td>Required</td>
+<td>+6512345678</td>
+</tr>
+<tr>
+<td>clientMessageId</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+<td>DkVd0001</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td></td>
+<td>Required</td>
+<td>I am your father</td>
+</tr>
+<tr>
+<td>encoding</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+<td>AUTO</td>
+</tr>
+<tr>
+<td>scheduled</td>
+<td>string</td>
+<td></td>
+<td>Optional</td>
+<td>&ldquo;2016-11-03T08:24:20.362Z&rdquo;</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>string</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<blockquote>
+<p>The single SMS request expect to receive a JSON with the following structure of names/values</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T08:24:20.332Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T08:24:20.332Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
