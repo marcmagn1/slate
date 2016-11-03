@@ -237,7 +237,7 @@ The JSON object takes the following properties:</p>
 </tr>
 <tr>
 <td style="text-align: center">expiry</td>
-<td style="text-align: center">string</td>
+<td style="text-align: center">timestamp</td>
 <td>Maximum date and time for this SMS to be sent at</td>
 <td style="text-align: center">Optional</td>
 </tr>
@@ -247,15 +247,21 @@ The JSON object takes the following properties:</p>
 <p>The single SMS request expect to receive a JSON with the following structure of names/values</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6512345678"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyBd00001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hellow World"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T08:24:20.332Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T08:24:20.332Z"</span><span class="w">
+  </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T18:24:20.332Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+<h4 id="source">Source</h4>
+
+<h4 id="destination">Destination</h4>
+
+<h4 id="clientmessageid">ClientMessageId</h4>
 
 <h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
