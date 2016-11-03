@@ -8,9 +8,9 @@ language_tabs:
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign up to get a Wavecell account</a>
-  - <a href='https://wavecell.com'></a>
-
+  - <a href='https://www.wavecell.com/customer/Account/Register'>Sign up to get a Wavecell account</a>
+  - <a href='https://wavecell.com'>Check-out Wavecell products</a>
+  - <a href='http://support.wavecell.com/anonymous_requests/new'>Contact support</a>
 includes:
   - errors
 
