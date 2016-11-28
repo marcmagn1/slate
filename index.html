@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Wavecell API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,10 +101,6 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -123,43 +119,204 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Wavecell SMS API! You can use our API to send single or bulk SMS to any country in the World using your Wavecell account.</p>
+<ul>
+<li>Welcome to the <strong>Wavecell SMS API documentation</strong>!</li>
+<li>You can use our API to <strong>send single SMS requests or batch SMS requests to deliver your text messages to any country or operator in the World</strong> using your Wavecell account.</li>
+<li>If you do not already have a Wavecell account, create one in minutes on our website: <a href="https://www.wavecell.com">https://www.wavecell.com</a></li>
+<li>To configure your account, credit your Wavecell balance, check your consumption and see a detailed pricing, head over to <a href="https://www.wavecell.com/customer/Account/Login">your account dashboard</a></li>
+<li>If you need any assistance with our service or if you need some help with the API integration, you can open a <a href="http://support.wavecell.com/anonymous_requests/new">support ticket</a></li>
+<li>If you need to contact our account management team for any commercial requests regarding your Wavecell account, you can reach out to them by email at <a href="mailto:sales@wavecell.com">sales@wavecell.com</a></li>
+</ul>
 
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="no">RUBY</span> <span class="no">CODE</span> <span class="no">FOR</span> <span class="no">AUTHENTICATION</span> <span class="no">GOES</span> <span class="no">HERE</span>
-</code></pre>
-<pre class="highlight python"><code><span class="n">PYTHON</span> <span class="n">CODE</span> <span class="n">FOR</span> <span class="n">AUTHENTICATION</span> <span class="n">GOES</span> <span class="n">HERE</span>
-</code></pre>
-<pre class="highlight shell"><code>SHELL CODE FOR AUTHENTICATION GOES HERE
-</code></pre>
-<pre class="highlight javascript"><code><span class="nx">JS</span> <span class="nx">CODE</span> <span class="nx">FOR</span> <span class="nx">AUTHENTICATION</span> <span class="nx">GOES</span> <span class="nx">HERE</span>
-</code></pre>
+<ul>
+<li>Wavecell SMS API uses <strong>HTTP/HTTPS basic authentication</strong>. </li>
+<li>The authentication uses the following credentials:
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">Accountid</code>, <code class="prettyprint">Password</code> and <code class="prettyprint">{subaccountid}</code> with your API credentials.</p>
-</blockquote>
-
-<p>Wavecell SMS API uses <strong>HTTP/HTTPS basic Authentication</strong>. The authentication uses the Wavecell AccountId as username and unless you modified it, the password to allow access to the API is your Wavecell password. You can register a new Wavecell account from Wavecell <a href="http://www.wavecell.com/customer/Account/Register">website</a>.</p>
+<ul>
+<li><strong>username</strong>: <em>your Wavecell AccountId</em></li>
+<li><strong>password</strong>: <em>your Wavecell Password (it can be modified from your account dashboard)</em></li>
+</ul></li>
+</ul>
 
 <aside class="notice">
-You must replace <code>subaccountid</code> with the subaccountid that you want to use. Accountid and password should also be replaced by your own credentials.
+- You can register a new Wavecell account from Wavecell <a href="https://www.wavecell.com/customer/Account/Register">website</a>.
 </aside>
 
-<h1 id="send-sms">Send SMS</h1>
+<h1 id="endpoints-overview">Endpoints overview</h1>
 
-<h2 id="send-single-sms-requests-post">Send single SMS requests (POST)</h2>
-<pre class="highlight ruby"><code><span class="no">RUBY</span> <span class="no">CODE</span> <span class="no">FOR</span> <span class="no">SENDING</span> <span class="no">SINGLE</span> <span class="no">SMS</span> <span class="no">REQUESTS</span> <span class="no">GOES</span> <span class="no">HERE</span>
-</code></pre>
-<pre class="highlight python"><code><span class="n">PYTHON</span>  <span class="n">CODE</span> <span class="n">FOR</span> <span class="n">SENDING</span> <span class="n">SINGLE</span> <span class="n">SMS</span> <span class="n">REQUESTS</span> <span class="n">GOES</span> <span class="n">HERE</span>
-</code></pre>
-<pre class="highlight shell"><code>SHELL CODE FOR SENDING SINGLE SMS REQUESTS GOES HERE
-</code></pre>
-<pre class="highlight javascript"><code><span class="nx">JS</span> <span class="nx">CODE</span> <span class="nx">FOR</span> <span class="nx">SENDING</span> <span class="nx">SINGLE</span> <span class="nx">SMS</span> <span class="nx">REQUESTS</span> <span class="nx">GOES</span> <span class="nx">HERE</span>
-</code></pre>
+<p>Using Wavecell API, you can use 3 different methods to send SMS to your end-users, each method is specific and best-suited for well-defined use-cases:</p>
+
+<ul>
+<li><a href="index.html#send-sms-single"><strong>Send SMS - Single</strong></a> allows to send one SMS per requests and is the most simple endpoint: you submit a JSON object with the SMS properties to the API, it is most suited for transactional SMS.</li>
+<li><a href="index.html#send-sms-many"><strong>Send SMS - Many</strong></a> allows to submit an array of SMS to the API, it should be used for broadcasting personalized content when each message needs a certain amount of unique personalization.</li>
+<li><a href="index.html#send-sms-many-compact"><strong>Send SMS - Many (Compact)</strong></a> allows to submit an array of SMS to the API in a simplified format compared to the previous endpoint. With this endpoint, you can specify common parameters for the array of SMS and thus, only specify the unique parameter(s) for each SMS in the request. It should be used for broadcasting messages requiring less personalization.</li>
+</ul>
+
+<h1 id="send-sms-single">Send SMS - Single</h1>
+
+<ul>
+<li>This endpoint is used to <strong>send SMS individually (1 request per SMS)</strong>.</li>
+<li>It is ideal to send single personalized messages for use-cases like notifications or alerting for example.</li>
+</ul>
+
+<h2 id="url">URL</h2>
+
+<ul>
+<li>The Wavecell subaccountid to use is defined in the URL where you send your POST request as shown below:</li>
+</ul>
+
+<p><code class="prettyprint">https://api.wavecell.com/sms/v1/{subAccountId}/single</code></p>
+
+<aside class="notice">
+You must replace <code>{subAccountId}</code> in the URL above with the subaccountid that you want to use.
+</aside>
+
+<h2 id="request-structure">Request structure</h2>
+
+<blockquote>
+<p>The single SMS request expects to receive a JSON with the following structure of names/values</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6512345678"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyBd00001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hellow World"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T08:24:20.332Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T18:24:20.332Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<ul>
+<li>To send a single SMS using the Wavecell SMS API you need to submit a JSON object to the url defined above.</li>
+<li>The JSON object takes the following properties:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Name</th>
+<th style="text-align: center">Type</th>
+<th>Description</th>
+<th style="text-align: center">Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><strong>source</strong></td>
+<td style="text-align: center">string</td>
+<td>Alphanumeric or numeric string used as Sender ID for the SMS</td>
+<td style="text-align: center">Optional</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>destination</strong></td>
+<td style="text-align: center">string</td>
+<td>Destination phone number</td>
+<td style="text-align: center">Required</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>clientMessageId</strong></td>
+<td style="text-align: center">string</td>
+<td>Unique id that you want to associate with the SMS</td>
+<td style="text-align: center">Optional</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>text</strong></td>
+<td style="text-align: center">string</td>
+<td>SMS body (ie: text of the message)</td>
+<td style="text-align: center">Required</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>encoding</strong></td>
+<td style="text-align: center">string</td>
+<td>Character set to use for this SMS</td>
+<td style="text-align: center">Optional</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>scheduled</strong></td>
+<td style="text-align: center">timestamp</td>
+<td>Pre-defined date and time for this SMS to be sent in the future</td>
+<td style="text-align: center">Optional</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>expiry</strong></td>
+<td style="text-align: center">timestamp</td>
+<td>Maximum date and time for this SMS to be sent at</td>
+<td style="text-align: center">Optional</td>
+</tr>
+</tbody></table>
+
+<h2 id="request-body">Request body</h2>
+
+<p>Below is a more detailed description of the parameters in the SMS request body (JSON object submitted to the API)</p>
+
+<h3 id="source">Source</h3>
+
+<p>The source value can also be called senderID or TPOA.<br>
+It is the from address that will be used when delivering the SMS to the handset.<br>
+It can take different formats:</p>
+
+<ul>
+<li><strong>Alphanumeric</strong> <em>(example: MyBrand):</em> this is the case when a source is composed of an alphanumeric string (max 11 characters: letters from the ASCII character set, digits and the space character). Alphanumeric sources are generally used for branded SMS to help the SMS receiver to identify the brand or services which originated the SMS.</li>
+<li><strong>Numeric</strong> <em>(example: +6512345678):</em> this the case when a source is composed of a string made purely of digits (max 17 chars). It can also start with the + sign. Numeric sources ar generally used when the originator intends to receive an answer to the SMS as it is interpreted as a regular phone number by the destination handset.</li>
+</ul>
+
+<p><strong>NB - Limitations:</strong> According to the country where the SMS is sent to, sources can be overwritten in order to ensure a better delivery. If you have some specific inquiries related to the type of source available for your account towards a specific destination, please <a href='mailto:sales@wavecell.com'>contact your account manager</a>.</p>
+
+<h3 id="destination">Destination</h3>
+
+<ul>
+<li>This value is the destination phone number for the SMS.</li>
+<li>The destination should be submitted following the international format: it should include the country code (the leading + sign can be omitted but this is not an obligation) and the leading 0 of the local format has to be removed.</li>
+<li><em>(Valid examples include: +6512345678, 6512345678)</em></li>
+</ul>
+
+<h3 id="clientmessageid">ClientMessageId</h3>
+
+<ul>
+<li>This value is not mandatory.</li>
+<li>If used, the clientMessageId allows you to submit SMS associated to your custom message ID. That way, you are able to match the information contained in the API response  with the ID from your own business logic.</li>
+</ul>
+
+<h3 id="text">Text</h3>
+
+<ul>
+<li>The text or the message (or SMS body) is the main part of your SMS: it is what is going to be displayed on the destination handset.</li>
+<li>It can contain characters from the ASCII character or from the UNICODE character set (see next section for more information).</li>
+<li>According to the encoding of the SMS, the number of SMS accounted per message will be proportional to the length of the text:
+
+<ul>
+<li>For ASCII messages, 160 characters = 1 SMS (1 part)</li>
+<li>For Unicode messages, 70 characters = 1 SMS (1 part)</li>
+</ul></li>
+<li>The maximum length for a text is 10 parts</li>
+</ul>
+
+<h3 id="encoding">Encoding</h3>
+
+<p><code class="prettyprint">AUTO</code> - <code class="prettyprint">ASCII</code> - <code class="prettyprint">UNICODE</code></p>
+
+<ul>
+<li><strong>AUTO</strong>: the API will analyze the content of your SMS text and select the correct encoding according to the characters used: if your SMS text contains UNICODE characters, then UNICODE will be selected, otherwise it will be ASCII</li>
+<li><strong>GSM7bit</strong>: by using GSM7bit, you are forcing the encoding in use to be GSM 7 bit: it will render correctly any of the characters from the character set (See a complete list <a href="https://en.wikipedia.org/wiki/GSM_03.38#GSM_7-bit_default_alphabet_and_extension_table_of_3GPP_TS_23.038_.2F_GSM_03.38">there</a>). Wavecell API considers each block of 160 GSM 7 bit characters as 1 SMS unit.</li>
+<li><strong>UNICODE</strong>: by using Unicode, you are forcing the encoding in use to be UNICODE: it will render correctly any of the characters from the UNICODE character set (See a complete list <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters8">there</a>). Wavecell API considers each block of 70 UNICODE characters as 1 SMS unit.</li>
+</ul>
+
+<h3 id="scheduled">Scheduled</h3>
+
+<ul>
+<li>The scheduled parameter should be used if you wish to schedule your message up to 7 days in advance. The SMS will be stored on the Wavecell platform and sent out at the predefined time and date. You can specify the scheduling timestamp using the standard ISO 8601 format (which includes and specifies the timezone offset to use):
+<code class="prettyprint">&quot;scheduled&quot;:&quot;2016-11-07T19:20:30+08:00&quot;</code></li>
+</ul>
+
+<h3 id="expiry">Expiry</h3>
+
+<ul>
+<li>The expiry parameter should be used if you wish to specify a maximum time and date for the SMS to be sent. If for any reason the Wavecell platform fails to send the message before the date and time predefined, the SMS will be discarded. You can specify the expiry timestamp using the standard ISO 8601 format (which includes and specifies the timezone offset to use):
+<code class="prettyprint">&quot;scheduled&quot;:&quot;2016-11-07T19:20:30+08:00&quot;</code></li>
+</ul>
+
+<h2 id="response">Response</h2>
 
 <blockquote>
 <p>The above command returns a JSON object structured like this:</p>
@@ -175,21 +332,83 @@ You must replace <code>subaccountid</code> with the subaccountid that you want t
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to send SMS individually (1 request per SMS).
-It is ideal to send single personalized messages for use-cases like notifications or alerting for example.</p>
+<p>The response returns the following:</p>
 
-<h3 id="url">URL</h3>
+<ul>
+<li><strong>umid</strong>: unique message ID automatically generated by Wavecell</li>
+<li><strong>clientMessageId</strong>: message ID that you submitted (if any)</li>
+<li><strong>destination</strong>: destination phone number to which the SMS was sent to</li>
+</ul>
+
+<p>A <strong>status</strong> object containing the following information:</p>
+
+<ul>
+<li><strong>status code</strong>: the status code can be either:
+
+<ul>
+<li><strong>QUEUED</strong>: the SMS has been accepted by Wavecell API and is queued for processing.</li>
+<li><strong>REJECTED</strong>: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
+</ul></li>
+<li><strong>description</strong>: this field describes the status code and provides additional information explaining the status. It can take the following values: 
+
+<ul>
+<li><em>SMS is accepted and queued for processing (QUEUED Status)</em></li>
+<li><em>Text value is missing (REJECTED Status)</em></li>
+<li><em>Invalid Text value. Reached max allowed limit (REJECTED Status)</em></li>
+<li><em>Invalid Source value. Reached max allowed limit (REJECTED Status)</em></li>
+<li><em>Expiry time already reached (REJECTED Status)</em></li>
+<li><em>Invalid MSISDN format (not E.164 international number) (REJECTED Status)</em></li>
+<li><em>Internal server error (REJECTED Status)</em></li>
+</ul></li>
+</ul>
+
+<h1 id="send-sms-many">Send SMS - Many</h1>
+
+<ul>
+<li>This endpoint is used to <strong>send SMS by batches (1 request for multiple SMS) with personalized contents/properties</strong>.</li>
+<li>It is ideal to send marketing campaigns or any kind of massive personalized announcement. To send a batch of identical SMS, it is easier to use the many/compact end-point.</li>
+</ul>
+
+<h2 id="url">URL</h2>
 
 <p>The Wavecell subaccountid to use is defined in the URL where you send your POST request as shown below:</p>
 
-<p><code class="prettyprint">https://api.wavecell.io/sms/v1/{subAccountId}</code></p>
+<p><code class="prettyprint">https://api.wavecell.com/sms/v1/{subAccountId}/many</code></p>
 
-<p><em>NB: you need to replace {subAccountId} by the subAccountId that you intend to use</em></p>
+<aside class="notice">
+You must replace <code>{subAccountId}</code> in the URL above with the subaccountid that you want to use.
+</aside>
 
-<h3 id="request-structure">Request structure</h3>
+<h2 id="request-structure">Request structure</h2>
 
-<p>To send a single SMS using the Wavecell SMS API you need to submit JSON object to the url defined above.
-The JSON object takes the following properties:</p>
+<blockquote>
+<p>The Many SMS request expects to receive a JSON with the following structure of names/values</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientBatchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T10:48:04.873Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T10:48:04.873Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T10:48:04.874Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T10:48:04.874Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"includeMessagesInResponse"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To send many SMS using the Wavecell SMS API you need to submit a JSON-formatted request with the following elements:</p>
 
 <table><thead>
 <tr>
@@ -200,173 +419,384 @@ The JSON object takes the following properties:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">source</td>
+<td style="text-align: center"><strong>clientBatchId</strong></td>
 <td style="text-align: center">string</td>
-<td>Alphanumeric or numeric string used as Sender ID for the SMS</td>
+<td>Unique ID that you want to associate with the batch of SMS</td>
 <td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td style="text-align: center">destination</td>
-<td style="text-align: center">string</td>
-<td>Destination phone number</td>
+<td style="text-align: center"><strong>messages</strong></td>
+<td style="text-align: center">array</td>
+<td>Array containing multiple SmsRequest objects (see Single doc)</td>
 <td style="text-align: center">Required</td>
 </tr>
 <tr>
-<td style="text-align: center">clientMessageId</td>
-<td style="text-align: center">string</td>
-<td>Unique id that you want to associate with the SMS</td>
+<td style="text-align: center"><strong>template</strong></td>
+<td style="text-align: center">object</td>
+<td>Object applying common properties to the SmsRequest objects in messages</td>
 <td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td style="text-align: center">text</td>
-<td style="text-align: center">string</td>
-<td>SMS body (ie: text of the message)</td>
-<td style="text-align: center">Required</td>
-</tr>
-<tr>
-<td style="text-align: center">encoding</td>
-<td style="text-align: center">string</td>
-<td>Character set to use for this SMS</td>
-<td style="text-align: center">Optional</td>
-</tr>
-<tr>
-<td style="text-align: center">scheduled</td>
-<td style="text-align: center">timestamp</td>
-<td>Pre-defined date and time for this SMS to be sent in the future</td>
-<td style="text-align: center">Optional</td>
-</tr>
-<tr>
-<td style="text-align: center">expiry</td>
-<td style="text-align: center">timestamp</td>
-<td>Maximum date and time for this SMS to be sent at</td>
+<td style="text-align: center"><strong>includeMessagesInResponse</strong></td>
+<td style="text-align: center">boolean</td>
+<td>Boolean defining if the API response should contain the SMS details</td>
 <td style="text-align: center">Optional</td>
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>The single SMS request expect to receive a JSON with the following structure of names/values</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6512345678"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyBd00001"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hellow World"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T08:24:20.332Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03T18:24:20.332Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h1 id="smsrequest-object-values">SmsRequest Object values</h1>
-
-<p>Here below is a more detailed information about the different values that you can assign when submitting SMS using Wavcell API.</p>
-
-<h2 id="source">source</h2>
-
-<p>The source value can also be called senderID or TPOA.<br>
-It is the from address that will be used when delivering the SMS to the handset.<br>
-It can take different formats:</p>
+<h2 id="about-the-template-object">About the template object</h2>
 
 <ul>
-<li><strong>Alphanumeric</strong> <em>(example: MyBrand):</em> this is the case when a source is composed of an alphanumeric string (max 11 characters: letters from the ASCII character set, digits and the space character). Alphanumeric sources are generally used for branded SMS to help the SMS receiver to identify the brand or services which originated the SMS.</li>
-<li><strong>Numeric</strong> *(example: +6512345678):*this the case when a source is composed of a string made purely of digits (max 17 chars). It can also start with the + sign. Numeric sources ar generally used when the originator intends to receive an answer to the SMS as it is interpereted as regular phone number by the destination handset.</li>
+<li>The <strong>many</strong> endpoint incorporates a new logic with the template object. </li>
+<li>The purpose of this object is to let you specify the common properties of the SMS contained in the messages into a single object. </li>
+<li>The best practice is <strong>to only incorporate the unique properties of each SMS in the SmsRequest objects</strong> contained in the messages array <strong>while specifying the common properties in the template object.</strong></li>
+<li>The <strong>template object is optional in the request.</strong></li>
 </ul>
 
-<p><strong>NB - Limitations:</strong> According to the country where the SMS is sent to, sources can be overwritten in order to ensure a better delivery. If you have some specific enquiries related to the type of source available for your account towards a specific destination, please <a href='mailto:sales@wavecell.com'>contact your account manager</a>.</p>
-
-<h2 id="destination">destination</h2>
-
-<ul>
-<li>This value is the destination phone number for the SMS.</li>
-<li>The destination should be submitted following the international format: it should include the country code (the leading + sign can be omitted but this is not an obligation) and the leading 0 of the local format has to be removed.</li>
-<li><em>(Valid examples include: +6512345678, 6512345678)</em></li>
-</ul>
-
-<h2 id="clientmessageid">clientMessageId</h2>
-
-<ul>
-<li>This value is not mandatory.</li>
-<li>If used, the clientMessageId allows you to submit SMS associated to your custom message ID. That way, you are able to match the information contained in the API response  with the ID from your own business logic.</li>
-</ul>
-
-<h2 id="text">text</h2>
-
-<ul>
-<li>The text or the message (or SMS body) is the main part of your SMS: it is what is going to be displayed on the destination handset.</li>
-<li>It can contain characters from the ASCII character or from the UNICODE character set (see next section for more information)</li>
-</ul>
-
-<h2 id="encoding">encoding</h2>
-
-<h2 id="scheduled">scheduled</h2>
-
-<h2 id="expiry">expiry</h2>
-
-          <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The template object can take the following parameters:</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th style="text-align: center">Name</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: center">Description</th>
+<th style="text-align: center">Required</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td style="text-align: center"><strong>source</strong></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center">Alphanumeric or numeric string used as Sender ID for the SMS</td>
+<td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td style="text-align: center"><strong>text</strong></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center">SMS body (ie: text of the message)</td>
+<td style="text-align: center">Required</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td style="text-align: center"><strong>encoding</strong></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center">Character set to use for this SMS</td>
+<td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td style="text-align: center"><strong>scheduled</strong></td>
+<td style="text-align: center">timestamp</td>
+<td style="text-align: center">Pre-defined date and time for this SMS to be sent in the future</td>
+<td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td style="text-align: center"><strong>expiry</strong></td>
+<td style="text-align: center">timestamp</td>
+<td style="text-align: center">Maximum date and time for this SMS to be sent at</td>
+<td style="text-align: center">Optional</td>
+</tr>
+</tbody></table>
+
+<h2 id="response">Response</h2>
+
+<blockquote>
+<p>The above command returns a JSON object structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"batchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientBatchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"acceptedCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rejectedCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"umid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<ul>
+<li>The response returns <strong>two different IDs for the batch</strong>:
+
+<ul>
+<li><strong>batchID</strong>: the unique batch ID generated automatically by Wavecell</li>
+<li><strong>clientBatchID</strong>: the batch ID that you submitted in the request (if any)</li>
+</ul></li>
+<li>It also returns a <strong>summary of the batch submission</strong>:
+
+<ul>
+<li><strong>acceptedCount</strong>: number of SMS accepted by the API</li>
+<li><strong>rejectedCount</strong>: number of SMS rejected by the API</li>
+</ul></li>
+<li>If the <strong>includeMessagesInResponse</strong> boolean has been set to True during the request, it also <strong>returns an array containing individual information for each SMS submitted</strong> to the API in the many request: 
+
+<ul>
+<li><strong>umid</strong>: unique message ID automatically generated by Wavecell</li>
+<li><strong>clientMessageId</strong>: message ID that you submitted (if any)</li>
+<li><strong>destination</strong>: destination phone number to which the SMS was sent to</li>
+</ul></li>
+</ul>
+
+<p>And a <strong>status object</strong> containing the following:</p>
+
+<ul>
+<li><strong>status code</strong>: the status code can be either:
+
+<ul>
+<li><strong>QUEUED</strong>: the SMS has been accepted by Wavecell API and is queued for processing.</li>
+<li><strong>REJECTED</strong>: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
+</ul></li>
+<li><strong>description</strong>: this field describes the status code and provides additional information explaining the status. It can take the following values: 
+
+<ul>
+<li><em>SMS is accepted and queued for processing (QUEUED Status)</em></li>
+<li><em>Text value is missing (REJECTED Status)</em></li>
+<li><em>Invalid Text value. Reached max allowed limit (REJECTED Status)</em></li>
+<li><em>Invalid Source value. Reached max allowed limit (REJECTED Status)</em></li>
+<li><em>Expiry time already reached (REJECTED Status)</em></li>
+<li><em>Invalid MSISDN format (not E.164 international number) (REJECTED Status)</em></li>
+<li><em>Internal server error (REJECTED Status)</em></li>
+</ul></li>
+</ul>
+
+<h1 id="send-sms-many-compact">Send SMS - Many (compact)</h1>
+
+<ul>
+<li>This endpoint is <strong>used to send SMS by batches (1 request for multiple SMS)</strong>.</li>
+<li>It is a <strong>derivated method from the many endpoint in a more compact form</strong>. - It only accepts messages with the same properties (source, text, encoding, scheduling time and expiry time). </li>
+<li>It should be used for use-cases such as announcement, message broadcasting, etc&hellip;</li>
+</ul>
+
+<h2 id="url">URL</h2>
+
+<p>The Wavecell subaccountid to use is defined in the URL where you send your POST request as shown below:</p>
+
+<p><code class="prettyprint">https://api.wavecell.com/sms/v1/{subAccountId}/many/compact</code></p>
+
+<aside class="notice">
+You must replace <code>{subAccountId}</code> in the URL above with the subaccountid that you want to use.
+</aside>
+
+<h2 id="request-structure">Request structure</h2>
+
+<blockquote>
+<p>The Many - Compact SMS request expects to receive a JSON with the following structure of names/values</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientBatchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"scheduled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T10:48:04.874Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-07T10:48:04.874Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"includeMessagesInResponse"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To send many SMS using the Wavecell SMS API you need to submit a JSON-formatted request with the following elements:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Name</th>
+<th style="text-align: center">Type</th>
+<th>Description</th>
+<th style="text-align: center">Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><strong>clientBatchId</strong></td>
+<td style="text-align: center">string</td>
+<td>Unique ID that you want to associate with the batch of SMS</td>
+<td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td style="text-align: center"><strong>destinations</strong></td>
+<td style="text-align: center">array</td>
+<td>Array containing the list of destinations phone numbers to send an SMS to</td>
+<td style="text-align: center">Required</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td style="text-align: center"><strong>template</strong></td>
+<td style="text-align: center">object</td>
+<td>Object defining the properties of the SMS sent to the destination phone numbers contained in the destinations array</td>
+<td style="text-align: center">Required</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td style="text-align: center"><strong>includeMessagesInResponse</strong></td>
+<td style="text-align: center">boolean</td>
+<td>Boolean defining if the API response should contain the SMS details</td>
+<td style="text-align: center">Optional</td>
+</tr>
+</tbody></table>
+
+<h2 id="about-the-template-object">About the template object</h2>
+
+<ul>
+<li>The <strong>many/compact</strong> endpoint relies entirely on the template object to define the properties of the SMS to send. </li>
+<li>Contrarily to the <strong>many</strong> endpoint, the <strong>template object is required</strong> when using the end-point.</li>
+</ul>
+
+<p>The template object can take the following parameters:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Name</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: center">Description</th>
+<th style="text-align: center">Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><strong>source</strong></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center">Alphanumeric or numeric string used as Sender ID for the SMS</td>
+<td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td style="text-align: center"><strong>text</strong></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center">SMS body (ie: text of the message)</td>
+<td style="text-align: center">Required</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td style="text-align: center"><strong>encoding</strong></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center">Character set to use for this SMS</td>
+<td style="text-align: center">Optional</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td style="text-align: center"><strong>scheduled</strong></td>
+<td style="text-align: center">timestamp</td>
+<td style="text-align: center">Pre-defined date and time for this SMS to be sent in the future</td>
+<td style="text-align: center">Optional</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>expiry</strong></td>
+<td style="text-align: center">timestamp</td>
+<td style="text-align: center">Maximum date and time for this SMS to be sent at</td>
+<td style="text-align: center">Optional</td>
+</tr>
+</tbody></table>
+
+<h2 id="response">Response</h2>
+
+<blockquote>
+<p>The above command returns a JSON object structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"batchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientBatchId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"acceptedCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rejectedCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"umid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientMessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<ul>
+<li>The response returns <strong>two different IDs for the batch</strong>:
+
+<ul>
+<li><strong>batchID</strong>: the unique batch ID generated automatically by Wavecell</li>
+<li><strong>clientBatchID</strong>: the batch ID that you submitted in the request (if any)</li>
+</ul></li>
+<li>It also returns a <strong>summary of the batch submission</strong>:
+
+<ul>
+<li><strong>acceptedCount</strong>: number of SMS accepted by the API</li>
+<li><strong>rejectedCount</strong>: number of SMS rejected by the API</li>
+</ul></li>
+<li>If the <strong>includeMessagesInResponse</strong> boolean has been set to True during the request, it also <strong>returns an array containing individual information for each SMS submitted</strong> to the API in the many request: 
+
+<ul>
+<li><strong>umid</strong>: unique message ID automatically generated by Wavecell</li>
+<li><strong>clientMessageId</strong>: message ID that you submitted (if any)</li>
+<li><strong>destination</strong>: destination phone number to which the SMS was sent to</li>
+</ul></li>
+</ul>
+
+<p>And a <strong>status object</strong> containing the following:</p>
+
+<ul>
+<li><strong>status code</strong>: the status code can be either:
+
+<ul>
+<li><strong>QUEUED</strong>: the SMS has been accepted by Wavecell API and is queued for processing.</li>
+<li><strong>REJECTED</strong>: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
+</ul></li>
+<li><strong>description</strong>: this field describes the status code and provides additional information explaining the status. It can take the following values: 
+
+<ul>
+<li><em>SMS is accepted and queued for processing (QUEUED Status)</em></li>
+<li><em>Text value is missing (REJECTED Status)</em></li>
+<li><em>Invalid Text value. Reached max allowed limit (REJECTED Status)</em></li>
+<li><em>Invalid Source value. Reached max allowed limit (REJECTED Status)</em></li>
+<li><em>Expiry time already reached (REJECTED Status)</em></li>
+<li><em>Invalid MSISDN format (not E.164 international number) (REJECTED Status)</em></li>
+<li><em>Internal server error (REJECTED Status)</em></li>
+</ul></li>
+</ul>
+
+          <h1 id="errors">Errors</h1>
+
+<blockquote>
+<p>The error codes response model is structured as follow:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"errorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-28T10:32:42.881Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The Wavecell API uses the following <strong>error codes</strong>:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">HTTP Status Code</th>
+<th style="text-align: center">Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">204</td>
+<td style="text-align: center">No Content</td>
+</tr>
+<tr>
+<td style="text-align: center">400</td>
+<td style="text-align: center">BadRequest</td>
+</tr>
+<tr>
+<td style="text-align: center">401</td>
+<td style="text-align: center">Unauthorized</td>
+</tr>
+<tr>
+<td style="text-align: center">500</td>
+<td style="text-align: center">InternalServerError</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
