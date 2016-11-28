@@ -83,7 +83,7 @@ You must replace <code>{subAccountId}</code> in the URL above with the subaccoun
 | **destination** | string | Destination phone number | Required |
 | **clientMessageId** | string | Unique id that you want to associate with the SMS | Optional |
 | **text** | string | SMS body (ie: text of the message) | Required |
-| **encoding** | string | Character set to use for this SMS | Optional |
+| **encoding** | string | Character set to use for this SMS - The possible values are `AUTO` - `GSM7bit` - `UNICODE` | Optional |
 | **scheduled** | timestamp | Pre-defined date and time for this SMS to be sent in the future | Optional |
 | **expiry** | timestamp | Maximum date and time for this SMS to be sent at | Optional |
 
@@ -124,7 +124,7 @@ It can take different formats:
 
 ### Encoding
 
-`AUTO` - `ASCII` - `UNICODE`
+`AUTO` - `GSM7bit` - `UNICODE`
 
 - **AUTO**: the API will analyze the content of your SMS text and select the correct encoding according to the characters used: if your SMS text contains UNICODE characters, then UNICODE will be selected, otherwise it will be ASCII
 - **GSM7bit**: by using GSM7bit, you are forcing the encoding in use to be GSM 7 bit: it will render correctly any of the characters from the character set (See a complete list <a href="https://en.wikipedia.org/wiki/GSM_03.38#GSM_7-bit_default_alphabet_and_extension_table_of_3GPP_TS_23.038_.2F_GSM_03.38">there</a>). Wavecell API considers each block of 160 GSM 7 bit characters as 1 SMS unit.
@@ -167,7 +167,7 @@ A **status** object containing the following information:
 
 - **status code**: the status code can be either:
   + **QUEUED**: the SMS has been accepted by Wavecell API and is queued for processing.
-  + **REJECTED**: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. 
+  + **REJECTED**: the SMS has been rejected by Wavecell API and the reason is stated in the description field. It will not be processed. 
 - **description**: this field describes the status code and provides additional information explaining the status. It can take the following values: 
   + *SMS is accepted and queued for processing (QUEUED Status)*
   + *Text value is missing (REJECTED Status)*
@@ -247,7 +247,7 @@ The template object can take the following parameters:
 |:---------:|:---------:|:---------------------------------------------------------------:|:--------:|
 | **source** | string | Alphanumeric or numeric string used as Sender ID for the SMS | Optional |
 | **text** | string | SMS body (ie: text of the message) | Required |
-| **encoding** | string | Character set to use for this SMS | Optional |
+| **encoding** | string | Character set to use for this SMS - The possible values are `AUTO` - `GSM7bit` - `UNICODE` | Optional |
 | **scheduled** | timestamp | Pre-defined date and time for this SMS to be sent in the future | Optional |
 | **expiry** | timestamp | Maximum date and time for this SMS to be sent at | Optional |
 
@@ -292,7 +292,7 @@ And a **status object** containing the following:
 
   - **status code**: the status code can be either:
     + **QUEUED**: the SMS has been accepted by Wavecell API and is queued for processing.
-    + **REJECTED**: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. 
+    + **REJECTED**: the SMS has been rejected by Wavecell API and the reason is stated in the description field. It will not be processed. 
   - **description**: this field describes the status code and provides additional information explaining the status. It can take the following values: 
     + *SMS is accepted and queued for processing (QUEUED Status)*
     + *Text value is missing (REJECTED Status)*
@@ -363,7 +363,7 @@ The template object can take the following parameters:
 |:---------:|:---------:|:---------------------------------------------------------------:|:--------:|
 | **source** | string | Alphanumeric or numeric string used as Sender ID for the SMS | Optional |
 | **text** | string | SMS body (ie: text of the message) | Required |
-| **encoding** | string | Character set to use for this SMS | Optional |
+| **encoding** | string | Character set to use for this SMS - The possible values are `AUTO` - `GSM7bit` - `UNICODE` | Optional |
 | **scheduled** | timestamp | Pre-defined date and time for this SMS to be sent in the future | Optional |
 | **expiry** | timestamp | Maximum date and time for this SMS to be sent at | Optional |
 
@@ -407,7 +407,7 @@ And a **status object** containing the following:
 
   - **status code**: the status code can be either:
     + **QUEUED**: the SMS has been accepted by Wavecell API and is queued for processing.
-    + **REJECTED**: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. 
+    + **REJECTED**: the SMS has been rejected by Wavecell API and the reason is stated in the description field. It will not be processed. 
   - **description**: this field describes the status code and provides additional information explaining the status. It can take the following values: 
     + *SMS is accepted and queued for processing (QUEUED Status)*
     + *Text value is missing (REJECTED Status)*
