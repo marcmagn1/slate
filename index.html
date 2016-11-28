@@ -229,7 +229,7 @@ You must replace <code>{subAccountId}</code> in the URL above with the subaccoun
 <tr>
 <td style="text-align: center"><strong>encoding</strong></td>
 <td style="text-align: center">string</td>
-<td>Character set to use for this SMS</td>
+<td>Character set to use for this SMS - The possible values are <code class="prettyprint">AUTO</code> - <code class="prettyprint">GSM7bit</code> - <code class="prettyprint">UNICODE</code></td>
 <td style="text-align: center">Optional</td>
 </tr>
 <tr>
@@ -294,7 +294,7 @@ It can take different formats:</p>
 
 <h3 id="encoding">Encoding</h3>
 
-<p><code class="prettyprint">AUTO</code> - <code class="prettyprint">ASCII</code> - <code class="prettyprint">UNICODE</code></p>
+<p><code class="prettyprint">AUTO</code> - <code class="prettyprint">GSM7bit</code> - <code class="prettyprint">UNICODE</code></p>
 
 <ul>
 <li><strong>AUTO</strong>: the API will analyze the content of your SMS text and select the correct encoding according to the characters used: if your SMS text contains UNICODE characters, then UNICODE will be selected, otherwise it will be ASCII</li>
@@ -347,7 +347,7 @@ It can take different formats:</p>
 
 <ul>
 <li><strong>QUEUED</strong>: the SMS has been accepted by Wavecell API and is queued for processing.</li>
-<li><strong>REJECTED</strong>: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
+<li><strong>REJECTED</strong>: the SMS has been rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
 </ul></li>
 <li><strong>description</strong>: this field describes the status code and provides additional information explaining the status. It can take the following values: 
 
@@ -478,7 +478,7 @@ You must replace <code>{subAccountId}</code> in the URL above with the subaccoun
 <tr>
 <td style="text-align: center"><strong>encoding</strong></td>
 <td style="text-align: center">string</td>
-<td style="text-align: center">Character set to use for this SMS</td>
+<td style="text-align: center">Character set to use for this SMS - The possible values are <code class="prettyprint">AUTO</code> - <code class="prettyprint">GSM7bit</code> - <code class="prettyprint">UNICODE</code></td>
 <td style="text-align: center">Optional</td>
 </tr>
 <tr>
@@ -548,7 +548,7 @@ You must replace <code>{subAccountId}</code> in the URL above with the subaccoun
 
 <ul>
 <li><strong>QUEUED</strong>: the SMS has been accepted by Wavecell API and is queued for processing.</li>
-<li><strong>REJECTED</strong>: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
+<li><strong>REJECTED</strong>: the SMS has been rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
 </ul></li>
 <li><strong>description</strong>: this field describes the status code and provides additional information explaining the status. It can take the following values: 
 
@@ -670,7 +670,7 @@ You must replace <code>{subAccountId}</code> in the URL above with the subaccoun
 <tr>
 <td style="text-align: center"><strong>encoding</strong></td>
 <td style="text-align: center">string</td>
-<td style="text-align: center">Character set to use for this SMS</td>
+<td style="text-align: center">Character set to use for this SMS - The possible values are <code class="prettyprint">AUTO</code> - <code class="prettyprint">GSM7bit</code> - <code class="prettyprint">UNICODE</code></td>
 <td style="text-align: center">Optional</td>
 </tr>
 <tr>
@@ -740,7 +740,7 @@ You must replace <code>{subAccountId}</code> in the URL above with the subaccoun
 
 <ul>
 <li><strong>QUEUED</strong>: the SMS has been accepted by Wavecell API and is queued for processing.</li>
-<li><strong>REJECTED</strong>: the SMS has ben rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
+<li><strong>REJECTED</strong>: the SMS has been rejected by Wavecell API and the reason is stated in the description field. It will not be processed. </li>
 </ul></li>
 <li><strong>description</strong>: this field describes the status code and provides additional information explaining the status. It can take the following values: 
 
